@@ -73,25 +73,39 @@ export const StyledDash = styled.div`
   }
   @media (min-width: 768px) {
     nav {
-      gap: 20rem;
+      display: flex;
+      justify-content: center;
+      gap: 18rem;
+      img {
+        width: 120px;
+      }
     }
     header {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      padding-left: 9.5rem;
+      padding-right: 10rem;
       align-items: center;
-      gap: 12rem;
+      gap: 3rem;
+
+      h3 {
+        width: 120px;
+      }
       h6 {
         margin: 0;
+        width: 290px;
+        font-size: 14px;
       }
     }
     main {
       padding-left: 9.5rem;
+
       h4 {
         width: 100%;
         font-size: 16px;
       }
       h6 {
-        width: 100%;
+        width: 75%;
         font-size: 14px;
       }
     }
@@ -101,14 +115,28 @@ export const StyledDash = styled.div`
       padding-left: 15rem;
       padding-right: 15rem;
     }
+    header {
+      padding-left: 17.5rem;
+      padding-right: 17.5rem;
+    }
     main {
-      padding-left: 17.2rem;
+      padding-left: 17.7rem;
+      h6 {
+        width: 62%;
+      }
     }
   }
   @media (min-width: 1440px) {
     height: 100vw;
+    nav {
+      gap: 28rem;
+    }
+    header {
+      padding-left: 25.5rem;
+      padding-right: 25.2rem;
+    }
     main {
-      padding-left: 30rem;
+      padding-left: 26rem;
     }
   }
 `;

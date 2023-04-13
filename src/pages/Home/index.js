@@ -102,4 +102,21 @@ export const HomeStyle = styled.div`
   @media (min-width: 768px) {
     height: 100vh;
   }
+  @media (min-width: 1024px) {
+    div {
+      width: 370px;
+      h3 {
+        padding-left: 9.5rem;
+      }
+      p {
+        width: 100%;
+        padding-left: 5.5rem;
+      }
+      form {
+        button {
+          padding: 0.5rem 9rem;
+        }
+      }
+    }
+  }
 `;

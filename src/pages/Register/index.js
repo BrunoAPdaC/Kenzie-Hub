@@ -97,4 +97,18 @@ export const StyledRegister = styled.div`
   @media (min-width: 768px) {
     height: 1000px;
   }
+  @media (min-width: 1024px) {
+    header {
+      gap: 12rem;
+    }
+    div {
+      width: 370px;
+      h4 {
+        padding-left: 8.5rem;
+      }
+      p {
+        padding-left: 7.5rem;
+      }
+    }
+  }
 `;
