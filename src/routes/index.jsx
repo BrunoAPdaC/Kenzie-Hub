@@ -3,15 +3,12 @@ import { RouteHome } from "../pages/Home/index.jsx";
 import { RouteRegister } from "../pages/Register/index.jsx";
 import { RouteDash } from "../pages/DashBoard/index.jsx";
 
-export function RoutesMain({ setDescriptionUser, descriptionUser }) {
+export function RoutesMain() {
   return (
     <Routes>
-      <Route path="/" element={<RouteHome setDescriptionUser={setDescriptionUser} />} />
+      <Route path="/" element={<RouteHome />} />
       <Route path="/register" element={<RouteRegister />} />
-      <Route
-        path="/dashboard"
-        element={<RouteDash descriptionUser={descriptionUser} setDescriptionUser={setDescriptionUser} />}
-      />
+      <Route path="/dashboard" element={<RouteDash />} />
     </Routes>
   );
 }

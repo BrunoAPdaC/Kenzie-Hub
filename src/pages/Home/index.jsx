@@ -1,31 +1,22 @@
 import { Link, useNavigate } from "react-router-dom";
 import { HomeStyle } from ".";
 import logo from "../../assets/img/Logo.svg";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
 
-export function RouteHome({ setDescriptionUser }) {
-  const schema = z.object({
-    email: z.string().nonempty("Email obrigatório"),
-    password: z.string().nonempty("Senha obrigatória"),
-  });
+import { useContext } from "react";
 
+import { AuthContext } from "../../Providers/Context";
+
+const schema = z.object({
+  email: z.string().nonempty("Email obrigatório"),
+  password: z.string().nonempty("Senha obrigatória"),
+});
+export function RouteHome() {
+  const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  async function loginUser(data) {
-    try {
-      const response = await api.post("/sessions", data);
-      localStorage.setItem("@TokenUser", response.data.token);
-      toast.success("Usuário logado");
-      navigate("/dashboard");
-    } catch (error) {
-      toast.error("Deu erro");
-    }
-  }
   const {
     register,
     handleSubmit,

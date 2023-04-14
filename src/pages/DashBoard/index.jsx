@@ -1,42 +1,42 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StyledDash } from ".";
 import logo from "../../assets/img/Logo.svg";
-import { useNavigate } from "react-router-dom";
-import { api } from "../../services/api";
+import mais from "../../assets/img/mais.svg";
 
-export function RouteDash({ descriptionUser, setDescriptionUser }) {
-  const token = localStorage.getItem("@TokenUser");
-  const navigate = useNavigate();
+import { AuthContext } from "../../Providers/Context";
 
-  function logoutUser() {
-    setDescriptionUser(null);
-    localStorage.clear("@TokenUser");
-    navigate("/");
-  }
+export function RouteDash() {
+  const { logoutUser, authUser, descriptionUser } = useContext(AuthContext);
+
   useEffect(() => {
-    async function loadUser() {
-      try {
-        const response = await api.get("/profile", { headers: { Authorization: ` Bearer ${token}` } });
-
-        setDescriptionUser(response);
-      } catch (error) {}
-    }
-    loadUser();
+    authUser();
   }, []);
 
   return (
     <StyledDash>
       <nav>
-        <img src={logo} alt="logo" />
-        <button onClick={logoutUser}>Sair</button>
+        <div>
+          <img src={logo} alt="logo" />
+          <button onClick={logoutUser}>Sair</button>
+        </div>
       </nav>
       <header>
-        <h3>Olá, {descriptionUser && descriptionUser.data.name}</h3>
-        <h6>{descriptionUser && descriptionUser.data.course_module}</h6>
+        <div>
+          <h3>Olá, {descriptionUser && descriptionUser.data.name}</h3>
+          <h6>{descriptionUser && descriptionUser.data.course_module}</h6>
+        </div>
       </header>
       <main>
-        <h4>Que pena! Estamos em desenvolvimento :(</h4>
-        <h6>Nossa aplicação está em desenvolvimento, em breve teremos novidades</h6>
+        <div>
+          <h4>Tecnologias</h4>
+          <img src={mais} alt="" />
+        </div>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </main>
     </StyledDash>
   );
