@@ -8,6 +8,7 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
   const [descriptionUser, setDescriptionUser] = useState(null);
+  const [techs, setTechs] = useState([]);
   const token = localStorage.getItem("@TokenUser");
   const navigate = useNavigate();
 
@@ -24,7 +25,6 @@ export function AuthProvider({ children }) {
       const response = await api.post("/sessions", data);
       localStorage.setItem("@TokenUser", response.data.token);
       toast.success("Usuário logado");
-
       navigate("/dashboard");
     } catch (error) {
       toast.error("Deu erro no login");
@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
     const { sub } = jwtDecode(token);
     try {
       const response = await api.get(`/users/${sub}`);
-      console.log(response);
+      setTechs(response.data.techs);
       setDescriptionUser(response);
     } catch (error) {}
   }
@@ -54,9 +54,10 @@ export function AuthProvider({ children }) {
     }
     loadUser();
   }, []);
+  console.log(techs);
 
   return (
-    <AuthContext.Provider value={{ descriptionUser, loadUser, loginUser, token, logoutUser, authUser }}>
+    <AuthContext.Provider value={{ descriptionUser, loadUser, loginUser, token, logoutUser, authUser, techs }}>
       {children}
     </AuthContext.Provider>
   );
