@@ -8,6 +8,7 @@ export function RoutesMain() {
     <Routes>
       <Route path="/" element={<RouteHome />} />
       <Route path="/register" element={<RouteRegister />} />
+
       <Route path="/dashboard" element={<RouteDash />} />
     </Routes>
   );
